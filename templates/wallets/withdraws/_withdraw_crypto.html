@@ -1,0 +1,87 @@
+
+<div class = "col-lg-6 col-sm-12"> 
+    <h4>Withdraw {{currency | uppercase}}</h4> 
+<div class="col-sm-12">
+<form id="{{currency}}_withdraw" name="withdrawForm" class="form form-horizontal" ng-controller="WithdrawsController" ng-submit="createWithdraw(currency)">
+
+  <div class="form-group">
+    
+      <label class="optional control-label">Label</label>
+      <input class="form-control" id="deposit_fund_extra" name="deposit_fund_extra" placeholder="Something to help you remember this in your statement"
+        type="text" ng-model="withdraw.fund_extra" required>
+  </div>
+
+  <div class="form-group"> 
+      <label class="optional control-label">Recipient's {{currency | uppercase}} Address</label>
+      <input class="form-control" id="deposit_fund_uid" name="deposit_fund_uid" type="text" ng-model="withdraw.fund_uid" required>
+  </div>
+
+  <div class="form-group">
+      <label class="optional control-label">{{currency | uppercase}} Balance</label>  
+      <p class="form-control-static">
+        <a class="currency-balance" id="withdraw_balance" ng-click="withdrawAll()" id="withdraw_all_btn">
+          <i class="fa fa-{{currency}}"></i> {{balance | number:4}}
+        </a>
+      </p>
+  </div>
+
+  <div class="form-group required">
+      <label class="decimal required control-label" for="withdraw_sum">Amount</label>
+      <input class="numeric decimal required form-control" id="withdraw_sum" min="0.01" max="{{btc_max}}" name="withdraw_sum" placeholder="Minimum is 0.01"
+      step="any" type="number" ng-model="withdraw.sum" required>
+    </div>
+  
+    
+
+  <div class="form-group">
+      <label class="optional control-label">Transaction Fee</label>
+      <p class="form-control-static">
+        <a class="currency-balance" ng-if="withdraw.sum">
+          <i class="fa fa-{{currency}}"></i>
+          {{(fee * withdraw.sum) | number:4}} {{currency | uppercase}}
+        </a>
+      </p>
+    
+  </div>
+
+  <div class="form-group">
+      <label class="optional control-label">Total</label>
+      <p class="form-control-static">
+        <a class="currency-balance" ng-if="withdraw.sum">
+          <i class="fa fa-{{currency}}"></i>
+          {{withdraw.sum + (fee * withdraw.sum) | number:4}}
+        </a>
+      </p>
+  </div>
+
+  <div class="form-group">
+    
+      <label class="optional control-label">Google Authenticator Code: </label>
+      
+        <input class="two_factor_auth_type" name="two_factor_type" type="hidden" value="app" />
+        <input class="string required form-control" id="two_factor_otp" ng-model="withdraw.otp" required name="two_factor_otp" placeholder='6 Digit Password'
+        />
+        <div class="input-group-btn send-code-button"></div>
+      
+    
+    <span class="help-block app">Google Authenticator will re-generate a new password every thirty seconds, please input timely.</span>
+    <div class="captcha-wrap col-sm-6 col-sm-offset-3"></div>
+  </div>
+
+  <div class="form-group">
+    <div class="alert alert-danger text-center" role="alert" style="display:none" id="otp-alert">
+      <span class="fa fa-info-circle" aria-hidden="true"></span>
+      <span class="sr-only">Error</span>
+      <span id="otp-alert-text"></span>
+    </div>
+  </div>
+
+  <div class="form-group">
+        <input id="withdraw_submit" class="btn btn-success btn-lg btn-block" data-loading-text="Creating..." name="commit" type="submit" value='Submit'>
+  </div>
+
+</form>
+</div>
+</div>
+
+

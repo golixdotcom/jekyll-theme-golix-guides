@@ -1,0 +1,12 @@
+<div class="form-group">
+  
+    <label class="optional control-label">Transaction Fee</label>
+  
+    <p class="form-control-static">
+      <a class="currency-balance" ng-if="withdraw.sum">
+        <i class="fa fa-{{currency}}"></i>
+        {{withdraw.sum * fee | number:2}}
+      </a>
+    </p>
+ 
+</div>

@@ -1,0 +1,123 @@
+<div class = "col-lg-6 col-sm-12"> 
+<div ng-if="currency != 'usd' && currency != 'zar'">
+    <h4>Deposit {{currency | uppercase}}</h4> 
+  <p class="text-warning">Fill out the form below to tell us how much you want to deposit</p>
+  <br/>
+  <form 
+    id="{{currency}}_deposit"
+    name="depositForm"
+    class="form form-horizontal transfer-form"
+    ng-controller="DepositsController"
+    ng-click="createDeposit(currency)"
+    >
+    <label class="optional">Amount: </label>
+    <input class="form-control" type="text" name="dusupay_amount" placeholder="e.g. 500" min="1" ng-model="deposit.amount" required>
+    <button style="background:none;border:none;" type="submit" >
+      <input name="submit" type="image" src="https://dusupay.com/img/paybuttons/dusupaybtn5.png" />
+    </button>
+  </form>
+</div>
+
+<div ng-if="currency == 'zar'">
+    <h4>Deposit {{currency | uppercase}}</h4> 
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="active" data-toggle="tab" data-target="#bank-deposit" aria-expanded="false"><a href="#">Deposit via Bank Transfer</a></li>
+    <li role="presentation" data-toggle="tab" data-target="#dusupay-deposit" aria-expanded="false"><a href="#">Deposit with Dusupay</a></li>
+  </ul>
+  <div  class="tab-content">
+    <div id="bank-deposit" class="tab-pane fade in active">
+    <h4>Deposit via Bank Transfer</h4>
+    <p class="text-warning">Fill out this form if you are making a bank transfer.</p>
+    <form
+    id="{{currency}}_deposit"
+    name="depositForm"
+    class="form form-horizontal transfer-form"
+    ng-controller="DepositsController"
+    ng-submit="createDeposit(currency)">
+  
+      <label class="optional control-label">Source Bank: </label>
+      <select
+        ng-options="bank as bank.name for bank in available_banks track by bank.id"
+        class="form-control"
+        id="deposit_fund_bank"
+        name="deposit_fund_bank"
+        ng-model="deposit.fund_bank"
+        required>
+      </select>
+  
+      <label class="optional control-label">Account Name: </label>
+      <input
+        class="form-control"
+        id="deposit_fund_extra"
+        name="deposit_fund_extra"
+        value="{{name}}"
+        type="text"
+        ng-model="deposit.fund_extra"
+        required>
+  
+      <label class="optional control-label">Account Number: </label>
+      <input
+        class="form-control"
+        id="deposit_fund_uid"
+        name="deposit_fund_uid"
+        placeholder="Source a/c #"
+        type="number"
+        ng-model="deposit.fund_uid"
+        required>
+  
+      <label class="optional control-label">{{ "wallets.deposit_usd.amount" | t }}</label>
+      <input
+        class="form-control"
+        id="deposit_sum"
+        name="deposit_sum"
+        placeholder="R100"
+        type="number"
+        min="1" ng-model="deposit.amount"
+        required>
+      <div class="col-sm-12">
+          <div class="form-group">
+              <div class="form-submit">
+                <input
+                  class="btn btn-success btn-lg btn-block"
+                  data-loading-text="Creating..."
+                  name="commit"
+                  type="submit"
+                  value="{{'submit' | t }}">
+              </div>
+            </div>
+      </div>
+
+    </form>
+  </div>
+
+    <div id="dusupay-deposit" class="tab-pane fade in">
+      <div ng-if="currency != 'usd'">
+        <h4>Deposit with Dusupay</h4>
+        <p class="text-warning">Fill out the form below to tell us how much you want to deposit</p>
+        <br/>
+        <form 
+          id="{{currency}}_deposit"
+          name="depositForm"
+          class="form form-horizontal transfer-form"
+          ng-controller="DepositsController"
+          ng-click="createDeposit(currency)"
+          >
+          <label class="optional">Amount: </label>
+          <input class="form-control" type="text" name="dusupay_amount" placeholder="e.g. 500" min="1" ng-model="deposit.amount" required>
+          <button style="background:none;border:none;" type="submit" >
+            <input name="submit" type="image" src="https://dusupay.com/img/paybuttons/dusupaybtn5.png" />
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div ng-if="currency == 'usd'">
+    <h4>Deposit {{currency | uppercase}}</h4> 
+  <div class='alert alert-danger'>
+    <h4>Deposits have been temporarily disabled.</h4>
+  </div>
+</div>
+</div>

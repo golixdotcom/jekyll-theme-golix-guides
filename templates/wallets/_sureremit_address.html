@@ -1,0 +1,7 @@
+<div ng-controller="DepositsController">
+  <h4>Golix's {{account.currency | uppercase}} Deposit Address:</h4>
+  <hr class="split">
+  <div id="deposit_address">{{account.stellar_deposit_address}}</div>
+  <a  data-clipboard-text="{{account.stellar_deposit_address}}" class="btn btn-primary btn-lg btn-block" data-clipboard-text>
+    <i class="fa fa-copy"></i> Copy Address</a>
+</div>

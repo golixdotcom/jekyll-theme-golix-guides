@@ -1,0 +1,19 @@
+<div class = "col-lg-6 col-sm-12"> 
+    <h4>Deposit {{currency | uppercase}}</h4> 
+<section class="withdraw-instruction">
+  <div class='alert alert-danger'>
+    <p>Sureremit Tokens requires both an address and a memo. The memo for each of your wallets is displayed below.</p>
+  </div>
+  <hr class="split">
+  <div class="row">
+    <div class="col-sm-12">
+      <ng-include src="'/templates/wallets/_qrcode.html'"></ng-include>
+      <br>
+      <ng-include src="'/templates/wallets/_sureremit_address.html'"></ng-include>
+      <br>
+      <ng-include src="'/templates/wallets/_memo.html'"></ng-include>
+    </div>
+  </div>
+  <hr class="split">
+</section>
+</div>

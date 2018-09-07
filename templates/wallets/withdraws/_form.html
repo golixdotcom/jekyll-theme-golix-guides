@@ -1,0 +1,65 @@
+<div class="form-group">
+    <label class="optional control-label" for="withdraw_fund_bank">Bank: </label>
+    <select
+      ng-options="bank as bank.name for bank in available_banks track by bank.id"
+      class="form-control"
+      id="withdraw_fund_bank"
+      name="withdraw_fund_bank"
+      ng-model="withdraw.fund_bank"
+      required>
+    </select>
+</div>
+
+<div class="form-group">
+    <label class="optional control-label" for="withdraw_fund_extra">Account Name: </label>
+    <input
+      class="form-control"
+      id="withdraw_fund_extra"
+      name="withdraw_fund_extra"
+      placeholder="Example: Sean Timba"
+      type="text"
+      ng-model="withdraw.fund_extra"
+      required>
+
+</div>
+
+<div class="form-group">
+    <label class="optional control-label" for="withdraw_fund_uid">Account Number: </label>
+    <input
+      class="form-control"
+      id="withdraw_fund_uid"
+      name="withdraw_fund_uid"
+      placeholder="Example: 0784717938"
+      type="text"
+      ng-model="withdraw.fund_uid"
+      required>
+</div>
+
+<div class="form-group">
+    <label class="optional control-label">Recipient's Residential Address: </label>
+    <input
+      class="form-control"
+      id="withdraw_fund_address"
+      name="withdraw_fund_address"
+      placeholder="Example: Mez Floor Batanai Mall, Cnr 1st StJ.Moyo Ave, Harare"
+      type="text"
+      ng-model="withdraw.fund_address"
+      required>
+</div>
+
+<div class="form-group required">
+    <label class="decimal required control-label" for="withdraw_sum">Amount</label>
+    <input
+      class="numeric decimal required form-control"
+      id="withdraw_sum"
+      min="1"
+      max="{{max}}"
+      name="withdraw_sum"
+      placeholder="At least $5"
+      step="any"
+      type="number"
+      ng-model="withdraw.sum"
+      ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
+      step="0.01"
+      required/>
+</div>

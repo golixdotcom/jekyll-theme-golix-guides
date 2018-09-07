@@ -1,0 +1,53 @@
+<div id="sidebar-wrapper">
+  <ul class="sidebar-nav" id="sidebar">    
+  <div class="dropdown">
+       <h4>Select Wallet :</h4> 
+    
+       <button class="btn btn-default btn-block dropdown-toggle selectwallet" type="button" data-toggle="dropdown">{{currency | uppercase}} Wallet
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <form class="form-inline searchcurr">
+                    <input ng-model="query" type="text"
+                      placeholder="Filter by currency code" autofocus>
+                  </form>
+                  <ul class="scrollable-menu"style="list-style: none; text-align: left">
+                  <li ng-class="{'active': currency === account.currency}" ng-repeat="account in accounts | filter:query | orderBy: 'currency'" bind="accounts">
+                    <a href="/wallets/#!/deposits/{{account.currency}}" ng-click="changeClass(account)">
+                      <div class="row">
+                          <h4>
+                              <span class="text-uppercase">{{account.currency}} </span> Wallet
+                            </h4>
+                        <p>
+                          Available Balance: &nbsp {{account.balance | round_down }}
+                        </p>
+                        <p>
+                          Locked Balance: <span class="currency-balance-locked">
+                              <i class="fa fa-lock"></i>
+                              &nbsp {{account.locked}}</span>
+                        </p>
+                      </div>
+                
+                    </a>
+                  </li>
+                </ul>
+            </ul>
+  </div>
+
+  <div class="walletinfo" ng-repeat="account in accounts | filter:query | orderBy: 'currency'" ng-if="currency == account.currency">
+      <div>
+        <h5>
+          Available Balance: &nbsp {{account.balance | round_down }}
+        </h5>
+      </div>
+      <div>
+        <h5>
+            Locked Balance: <span class="currency-balance-locked">
+                <i class="fa fa-lock"></i>
+                &nbsp {{account.locked}}</span>
+        </h5>
+        
+      </div>
+    
+  </div>
+  </ul>
+</div>

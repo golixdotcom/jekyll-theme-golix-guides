@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ "../assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
+          <div class="container">
+            <a class="navbar-brand" href="https://guides.golix.com" >
+              {% if site.logo %}
+                <img src="{{site.logo | relative_url}}" alt="Logo" />
+              {% endif %}
+            </a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link text-white active" href="https://steemit.com/@golix">Blog</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a href="https://golix.com/login" class="login">Log In</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="btn btn-light action-button" role="button" href="https://golix.com/signup">Sign Up</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <section>
+
+      {{ content }}
+
+      </section>
+      <footer>
+        <div class="container">
+          <div class="footer-navigation">
+            <h3>
+              <a class="navbar-brand" href="https://guides.golix.com" >
+                {% if site.logo %}
+                  <img src="{{site.logo | relative_url}}" alt="Logo" />
+                {% endif %}
+              </a>
+            </h3>
+            <div class="social-links social-icons">
+              <a href="#">
+                <i class="fa fa-facebook"></i>
+              </a>
+              <a href="#">
+                <i class="fa fa-twitter"></i>
+              </a>
+              <a href="#">
+                <i class="fa fa-linkedin"></i>
+              </a><a href="#">
+                <i class="fab fa-telegram-plane"></i>
+              </a>
+            </div>
+            <div class="social-links social-icons">
+                <p>Golix. &copy 2018. All Rights Reserved.</p>
+            </div>
+          </div>
+          <div class="footer-contacts">
+            <ul>
+              <li>
+                <a href="mailto:support@golix.com">Help & Support</a>
+              </li>
+              <li>
+                <a href="https://golix.com/privacy-policy">Privacy Policy</a>
+              </li>
+              <li>
+                <a href="https://golix.com/terms-and-conditions">Terms & Conditions</a>
+              </li>
+              <li>
+                <a href="https://golix.com/api_documentation">API Documentation</a>
+              </li>
+              <li>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScDH5qqGvzmGIWNYT3XtInO5VdtN0T27HF-rtxw3xjFAlvDOQ/viewform">Token Listings</a>
+              </li>
+              <li>
+                <a href="https://golix.com/market_makers">Market Makers</a>
+              </li>
+              <li>
+                <a href="https://golix.com/tokensale">Tokensale</a>
+              </li>
+              <li>
+                <a href="https://golix.com/careers">Careers</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-contacts">
+            <p>
+              First Floor,
+              Batanai Mall,
+              <br>
+              Corner Jason Moyo Ave / First Street,
+              <br></span> Harare
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    {% if site.google_analytics %}
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', '{{ site.google_analytics }}', 'auto');
+      ga('send', 'pageview');
+    </script>
+    {% endif %}
+  </body>
+</html>

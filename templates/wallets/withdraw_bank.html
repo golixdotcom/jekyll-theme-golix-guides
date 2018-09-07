@@ -1,0 +1,42 @@
+<div class = "col-lg-6 col-sm-12"> 
+    <h4>Withdraw {{currency | uppercase}}</h4> 
+<div class="col-sm-12">
+<form id="usd_withdraws" name="withdrawForm" class="form form-horizontal" ng-controller="WithdrawsController" ng-submit="createWithdraw(currency)">
+
+  <ng-include src="'/templates/wallets/withdraws/_balance.html'"></ng-include>
+  <ng-include src="'/templates/wallets/withdraws/_form.html'"></ng-include>
+
+  <ng-include src="'/templates/wallets/withdraws/_fee.html'"></ng-include>
+  <ng-include src="'/templates/wallets/withdraws/_total.html'"></ng-include>
+
+  <div class="form-group">
+      <label class="optional control-label">Google Authenticator Code: </label>
+    
+        <input class="two_factor_auth_type" name="two_factor_type" type="hidden" value="app" />
+        <input class="string required form-control" id="two_factor_otp" ng-model="withdraw.otp" required name="two_factor_otp" placeholder='6 Digit Password'
+        />
+        <div class="input-group-btn send-code-button"></div>
+      
+    <span class="help-block app">Google Authenticator will re-generate a new password every thirty seconds, please input timely.</span>
+    <div class="captcha-wrap col-sm-6 col-sm-offset-3"></div>
+  </div>
+
+  <div class="form-group">
+    <div class="alert alert-danger text-center" role="alert" style="display:none" id="otp-alert">
+      <span class="fa fa-info-circle" aria-hidden="true"></span>
+      <span class="sr-only">Error</span>
+      <span id="otp-alert-text"></span>
+    </div>
+  </div>
+
+  <!-- <ng-include src="'/templates/wallets/withdraws/_submit.html'"></ng-include> -->
+  <div class="form-group">
+    <div class="form-submit">
+      <input id="withdraw_submit" class="btn btn-success btn-lg btn-block" data-loading-text="Creating..." name="commit" type="submit" value='Submit'>
+    </div>
+  </div>
+</form>
+</div>
+</div>
+
+<ng-include src="'/templates/wallets/withdraws/_tx_history.html'"></ng-include>

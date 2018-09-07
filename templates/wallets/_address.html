@@ -1,0 +1,10 @@
+<div ng-controller="DepositsController">
+  
+  <h4>My {{account.currency | uppercase}} Wallet Address:</h4>
+  <hr class="split">
+  <div id="deposit_address">{{account.deposit_address}}</div>
+  <a  data-clipboard-text="{{account.deposit_address}}" class="btn btn-primary btn-lg btn-block" data-clipboard-action="copy">
+    <i class="fa fa-copy"></i> Copy Address
+  </a>
+  <a id="new_address" class="btn btn-success btn-lg btn-block" ng-click="genAddress(deposit_channel.resource_name); $event.preventDefault()" href="#"><i class="fa fa-plus"></i>New Address</a>
+</div>
