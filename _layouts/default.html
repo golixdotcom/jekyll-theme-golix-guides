@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ "/assets/styles.css" | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css?v=' | append: site.github.build_revision | relative_url }}" media="screen" type="text/css">
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
@@ -16,7 +16,7 @@
         <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
           <div class="container">
             <a class="navbar-brand" href="https://guides.golix.com" >
-              <img src="{{ '/assets/img/logo.svg' | relative_url }}" alt="Golix Guides">
+              <img src="{{ '/assets/img/logo.svg' | append: site.github.build_revision | relative_url }}" alt="Golix Guides">
             </a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1">
               <span class="sr-only">Toggle navigation</span>
@@ -48,7 +48,7 @@
           <div class="footer-navigation">
             <h3>
               <a class="navbar-brand" href="https://guides.golix.com" >
-                <img src="{{ '/assets/img/logo.svg' | relative_url }}" alt="Golix Guides">
+                <img src="{{ '/assets/img/logo.svg' | append: site.github.build_revision | relative_url }}" alt="Golix Guides">
               </a>
             </h3>
             <div class="social-links social-icons">
